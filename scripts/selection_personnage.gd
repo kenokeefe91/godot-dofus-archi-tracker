@@ -17,13 +17,26 @@ var _personnages: Array[Dictionary] = []
 
 func _ready() -> void:
 	base = SQLite.new()
-	base.path = CHEMIN_BASE
+	base.path = _chemin_base()
 	if not base.open_db():
 		etiquette_statut.text = "Impossible d'ouvrir la base archimonstre.db.sqlite."
 		return
 	bouton_ajouter.pressed.connect(_on_bouton_ajouter_pressed)
 	liste_personnages.item_activated.connect(_on_liste_personnages_active)
 	_rafraichir_liste()
+
+
+func _chemin_base() -> String:
+	if OS.has_feature("editor"):
+		return CHEMIN_BASE
+	var chemin: String = "user://archimonstre.db.sqlite"
+	if FileAccess.file_exists(chemin):
+		return chemin
+	var source: PackedByteArray = FileAccess.get_file_as_bytes(CHEMIN_BASE)
+	var fichier: FileAccess = FileAccess.open(chemin, FileAccess.WRITE)
+	fichier.store_buffer(source)
+	fichier.close()
+	return chemin
 
 
 func _rafraichir_liste() -> void:

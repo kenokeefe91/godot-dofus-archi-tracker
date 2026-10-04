@@ -1,3 +1,4 @@
+
 extends Control
 
 const CHEMIN_BASE := "res://archimonstre.db.sqlite"
@@ -51,7 +52,7 @@ var base: SQLite
 
 func _ready() -> void:
 	base = SQLite.new()
-	base.path = CHEMIN_BASE
+	base.path = _chemin_base()
 	if not base.open_db():
 		titre.text = "Impossible d'ouvrir la base archimonstre.db.sqlite."
 		return
@@ -67,6 +68,19 @@ func _ready() -> void:
 	bouton_reset.pressed.connect(_on_reset_pressed)
 	tableau.item_edited.connect(_on_item_edite)
 	_rafraichir()
+
+
+func _chemin_base() -> String:
+	if OS.has_feature("editor"):
+		return CHEMIN_BASE
+	var chemin: String = "user://archimonstre.db.sqlite"
+	if FileAccess.file_exists(chemin):
+		return chemin
+	var source: PackedByteArray = FileAccess.get_file_as_bytes(CHEMIN_BASE)
+	var fichier: FileAccess = FileAccess.open(chemin, FileAccess.WRITE)
+	fichier.store_buffer(source)
+	fichier.close()
+	return chemin
 
 
 func _configurer_tableau() -> void:
