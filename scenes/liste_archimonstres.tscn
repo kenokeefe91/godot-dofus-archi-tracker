@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/liste_archimonstres.gd" id="1_liste"]
+
+[node name="ListeArchimonstres" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_liste")
+
+[node name="Rangee" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Filtres" type="VBoxContainer" parent="Rangee"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 0)
+theme_override_constants/separation = 12
+
+[node name="TitreFiltres" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Filtres"
+
+[node name="EtiquetteLvlMin" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Lvl min"
+
+[node name="FiltreLvlMin" type="SpinBox" parent="Rangee/Filtres"]
+layout_mode = 2
+min_value = 0.0
+max_value = 200.0
+value = 0.0
+unique_name_in_owner = true
+
+[node name="EtiquetteLvlMax" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Lvl max"
+
+[node name="FiltreLvlMax" type="SpinBox" parent="Rangee/Filtres"]
+layout_mode = 2
+min_value = 0.0
+max_value = 200.0
+value = 200.0
+unique_name_in_owner = true
+
+[node name="EtiquetteRecherche" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Recherche (nom archimonstre)"
+
+[node name="FiltreRecherche" type="LineEdit" parent="Rangee/Filtres"]
+layout_mode = 2
+placeholder_text = "Nom de l'archimonstre"
+unique_name_in_owner = true
+
+[node name="EtiquetteRechercheMonstre" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Recherche (type de monstre)"
+
+[node name="FiltreMonstre" type="LineEdit" parent="Rangee/Filtres"]
+layout_mode = 2
+placeholder_text = "Type de monstre"
+unique_name_in_owner = true
+
+[node name="EtiquetteStatut" type="Label" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Statut de capture"
+
+[node name="FiltreCaptures" type="CheckBox" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Capturés"
+unique_name_in_owner = true
+
+[node name="FiltreNonCaptures" type="CheckBox" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Non capturés"
+unique_name_in_owner = true
+
+[node name="BoutonReset" type="Button" parent="Rangee/Filtres"]
+layout_mode = 2
+text = "Réinitialiser"
+unique_name_in_owner = true
+
+[node name="ColonneDroite" type="VBoxContainer" parent="Rangee"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Entete" type="HBoxContainer" parent="Rangee/ColonneDroite"]
+layout_mode = 2
+
+[node name="BoutonRetour" type="Button" parent="Rangee/ColonneDroite/Entete"]
+layout_mode = 2
+text = "Retour"
+unique_name_in_owner = true
+
+[node name="Titre" type="Label" parent="Rangee/ColonneDroite/Entete"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Archimonstres"
+horizontal_alignment = 1
+unique_name_in_owner = true
+
+[node name="EtiquetteCompteur" type="Label" parent="Rangee/ColonneDroite"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+unique_name_in_owner = true
+
+[node name="TableauArchimonstres" type="Tree" parent="Rangee/ColonneDroite"]
+layout_mode = 2
+size_flags_vertical = 3
+unique_name_in_owner = true
+
+[node name="EtiquettePierres" type="Label" parent="Rangee/ColonneDroite"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+unique_name_in_owner = true

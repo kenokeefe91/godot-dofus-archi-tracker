@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/selection_personnage.gd" id="1_selection"]
+
+[node name="SelectionPersonnage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_selection")
+
+[node name="Colonne" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Titre" type="Label" parent="Colonne"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Sélection du personnage"
+horizontal_alignment = 1
+
+[node name="Aide" type="Label" parent="Colonne"]
+layout_mode = 2
+text = "Double-cliquez un personnage pour consulter ses archimonstres"
+horizontal_alignment = 1
+
+[node name="ListePersonnages" type="ItemList" parent="Colonne"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 260)
+size_flags_vertical = 3
+unique_name_in_owner = true
+
+[node name="Formulaire" type="HBoxContainer" parent="Colonne"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BlocNom" type="VBoxContainer" parent="Colonne/Formulaire"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EtiquetteNom" type="Label" parent="Colonne/Formulaire/BlocNom"]
+layout_mode = 2
+text = "Nom"
+
+[node name="ChampNom" type="LineEdit" parent="Colonne/Formulaire/BlocNom"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Nom du personnage"
+unique_name_in_owner = true
+
+[node name="BlocServeur" type="VBoxContainer" parent="Colonne/Formulaire"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EtiquetteServeur" type="Label" parent="Colonne/Formulaire/BlocServeur"]
+layout_mode = 2
+text = "Serveur"
+
+[node name="ChampServeur" type="LineEdit" parent="Colonne/Formulaire/BlocServeur"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Serveur"
+unique_name_in_owner = true
+
+[node name="BlocClasse" type="VBoxContainer" parent="Colonne/Formulaire"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EtiquetteClasse" type="Label" parent="Colonne/Formulaire/BlocClasse"]
+layout_mode = 2
+text = "Classe"
+
+[node name="ChampClasse" type="LineEdit" parent="Colonne/Formulaire/BlocClasse"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Classe"
+unique_name_in_owner = true
+
+[node name="BoutonAjouter" type="Button" parent="Colonne/Formulaire"]
+layout_mode = 2
+custom_minimum_size = Vector2(140, 0)
+text = "Ajouter"
+unique_name_in_owner = true
+
+[node name="EtiquetteStatut" type="Label" parent="Colonne"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+unique_name_in_owner = true
